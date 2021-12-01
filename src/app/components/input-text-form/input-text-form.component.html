@@ -1,0 +1,24 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form__group field">
+    <label for="inputText" class="form__label">
+      Ingresa el texto para contar las palabras
+    </label>
+    <input
+      id="inputText"
+      placeholder="Ingresa el texto"
+      class="form__field"
+      type="text"
+      formControlName="inputText"
+    />
+    <button [disabled]="!form.valid" class="button" type="submit">
+      Contar
+    </button>
+  </div>
+</form>
+
+<div *ngIf="this.dataObject" style="margin-top: 20px">
+  <li *ngFor="let data of dataObject">
+    palabra encontrada: {{ data["Word"] }}, veces que se repite la palabra
+    {{ data["Count"] }}
+  </li>
+</div>
